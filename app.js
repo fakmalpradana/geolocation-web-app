@@ -8,6 +8,13 @@ app.get('/', (req, res) => {
     res.send('server is online')
 })
 
+// map layout page
+app.get('/map', (req, res) => {
+    res.render('map', {
+        title: 'Map Page',
+    })
+})
+
 // data page
 app.get('/data', (req, res) => {
     const data = {
