@@ -1,23 +1,34 @@
 const express = require('express')
+const expressLayout = require('express-ejs-layouts')
 
 const app = express()
 const PORT = 3000
 
+// setup ejs
+app.set('view engine', 'ejs')
+app.use(expressLayout)
+app.use(express.static('public')) 
+app.use(express.urlencoded({extended: true})) 
+
 // home page
 app.get('/', (req, res) => {
-    res.send('server is online')
+    res.render('index', {
+        title: 'Home Page',
+        layout: 'layout/main'
+    })
 })
 
 // map layout page
 app.get('/map', (req, res) => {
     res.render('map', {
         title: 'Map Page',
+        layout: 'layout/main'
     })
 })
 
 // data page
 app.get('/data', (req, res) => {
-    const data = {
+    const data1 = {
         "type": "FeatureCollection",
         "features": [
           {
@@ -33,7 +44,12 @@ app.get('/data', (req, res) => {
           }
         ]
       }
-    res.send(data)
+      const data = JSON.parse(data1)
+      res.render('data', {
+        title: 'Data Page',
+        layout: 'layout/main',
+        data: data,
+    })
 })
 
 app.listen(PORT, () => {
