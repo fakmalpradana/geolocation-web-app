@@ -44,7 +44,7 @@ app.get('/data', (req, res) => {
           }
         ]
       }
-      const data = JSON.parse(data1)
+      const data = JSON.parse(JSON.stringify(data1))
       res.render('data', {
         title: 'Data Page',
         layout: 'layout/main',

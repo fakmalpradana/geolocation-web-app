@@ -19,15 +19,11 @@
                     </td>
                 </tr
                 <% } %>
-
-                <% data.forEach((data, i) => { i++ %>
                     <tr>
-                        <th scope="row"><%= i++ %> </th>
                         <td><%= data.feature[0].geometry.type %> </td>
                         <td><%= data.feature[0].geometry.coordinates[0] %> </td>
-                        <td><%= data.feature[0].geometry.coordinates[0] %> </td>
+                        <td><%= data.feature[0].geometry.coordinates[1] %> </td>
                       </tr>
-                <% }) %>
             </tbody>
           </table>
     </div>
